@@ -1,0 +1,24 @@
+[package]
+name = "arraypp"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-2.0-or-later"
+description = "A `no_std` and no `alloc` library for more efficient array processing."
+homepage = "https://github.com/Joker2770/arraypp"
+repository = "https://github.com/Joker2770/arraypp"
+authors = ["Joker2770"]
+keywords = ["array", "array-processing", "no_std"]
+
+[profile.dev]
+codegen-units = 1   # better optimizations
+lto = true          # better optimizations
+debug = true        # debug symbols
+opt-level = 0
+incremental = false
+
+[profile.release]
+codegen-units = 1   # better optimizations
+lto = true          # better optimizations
+strip = true
+opt-level = 3
+incremental = false
