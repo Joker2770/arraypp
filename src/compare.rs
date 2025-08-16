@@ -11,7 +11,7 @@ pub struct ArrayExtrema;
 /// Check if the value is valid (handles floating-point NaN)
 fn is_valid<T: PartialOrd>(value: T) -> bool {
     // Use `value != value` trick to detect NaN
-    !(value != value)
+    value.eq(&value)
 }
 
 /// Generic comparison function (handles floating-point NaN correctly)
@@ -20,9 +20,9 @@ fn compare_items<T: PartialOrd>(a: T, b: T) -> Ordering {
         Some(ordering) => ordering,
         None => {
             // Handle NaN cases
-            if a != a {
+            if !a.eq(&a) {
                 Ordering::Less
-            } else if b != b {
+            } else if !b.eq(&b) {
                 Ordering::Greater
             } else {
                 Ordering::Equal
