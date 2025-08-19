@@ -267,6 +267,12 @@ impl<T: Copy, const N: usize> ArrayBinaryTree<T, N> {
     }
 }
 
+impl<T: Copy, const N: usize> Default for ArrayBinaryTree<T, N> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // Example tests
 #[cfg(test)]
 mod tests {
