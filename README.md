@@ -7,7 +7,7 @@ A `no_std` and no `alloc` library for more efficient array processing.
 ## Usage
 Compare elements: 
 
-```Rust
+```rust
     use arraypp::compare::ArrayExtrema;
     
     // Find both the minimum and maximum values and their indices at the same time
@@ -29,7 +29,7 @@ Compare elements:
 
 Queue options: 
 
-```Rust
+```rust
     use arraypp::queue::ArrayQueue;
     
     let mut queue: ArrayQueue<i32, 3> = ArrayQueue::new();
@@ -64,8 +64,9 @@ Queue options:
 
 Stack options: 
 
-```Rust
+```rust
     use arraypp::stack::ArrayStack;
+
     let mut stack: ArrayStack<i32, 3> = ArrayStack::new(0);
 
     assert!(stack.is_empty());
