@@ -16,6 +16,7 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /// Moving average filter structure
+#[derive(Debug, Clone, Copy)]
 pub struct MovingAverage<const N: usize> {
     buffer: [f32; N],
     index: usize,
@@ -76,6 +77,12 @@ impl<const N: usize> MovingAverage<N> {
     /// Check if the filter is empty
     pub fn is_empty(&self) -> bool {
         self.count == 0
+    }
+}
+
+impl<const N: usize> Default for MovingAverage<N> {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
