@@ -1,6 +1,6 @@
 [package]
 name = "arraypp"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
 license = "GPL-2.0-or-later"
 description = "A `no_std` and no `alloc` library for more efficient array processing."

@@ -2,7 +2,7 @@
 
 [![Rust](https://github.com/Joker2770/arraypp/actions/workflows/rust.yml/badge.svg)](https://github.com/Joker2770/arraypp/actions/workflows/rust.yml)
 
-A `no_std` and no `alloc` library for more efficient array processing.
+A `no_std` and no `alloc` library for more efficient array processing, with functions such as tree, queue, stack, comparison,  filtering.
 
 ## Usage
 Compare elements: 
