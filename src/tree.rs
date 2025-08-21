@@ -56,9 +56,8 @@ impl<T: Copy, const N: usize> ArrayBinaryTree<T, N> {
         if self.nodes[parent].as_ref().unwrap().left.is_some() {
             return Err("Left child already exists");
         }
-        self.insert_node(data, None, None).map(|idx| {
+        self.insert_node(data, None, None).inspect(|&idx| {
             self.nodes[parent].as_mut().unwrap().left = Some(idx);
-            idx
         })
     }
 
@@ -70,9 +69,8 @@ impl<T: Copy, const N: usize> ArrayBinaryTree<T, N> {
         if self.nodes[parent].as_ref().unwrap().right.is_some() {
             return Err("Right child already exists");
         }
-        self.insert_node(data, None, None).map(|idx| {
+        self.insert_node(data, None, None).inspect(|&idx| {
             self.nodes[parent].as_mut().unwrap().right = Some(idx);
-            idx
         })
     }
 
@@ -108,18 +106,18 @@ impl<T: Copy, const N: usize> ArrayBinaryTree<T, N> {
             let node = self.nodes[idx].as_ref().unwrap();
             visit(&node.data);
 
-            if let Some(right) = node.right {
-                if sp < N {
-                    stack[sp] = Some(right);
-                    sp += 1;
-                }
+            if let Some(right) = node.right
+                && sp < N
+            {
+                stack[sp] = Some(right);
+                sp += 1;
             }
 
-            if let Some(left) = node.left {
-                if sp < N {
-                    stack[sp] = Some(left);
-                    sp += 1;
-                }
+            if let Some(left) = node.left
+                && sp < N
+            {
+                stack[sp] = Some(left);
+                sp += 1;
             }
         }
     }
@@ -232,17 +230,17 @@ impl<T: Copy, const N: usize> ArrayBinaryTree<T, N> {
                 let node = self.nodes[idx].as_ref().unwrap();
 
                 // Add child nodes to the next level queue
-                if let Some(left) = node.left {
-                    if next_size < N {
-                        next_queue[next_size] = Some(left);
-                        next_size += 1;
-                    }
+                if let Some(left) = node.left
+                    && next_size < N
+                {
+                    next_queue[next_size] = Some(left);
+                    next_size += 1;
                 }
-                if let Some(right) = node.right {
-                    if next_size < N {
-                        next_queue[next_size] = Some(right);
-                        next_size += 1;
-                    }
+                if let Some(right) = node.right
+                    && next_size < N
+                {
+                    next_queue[next_size] = Some(right);
+                    next_size += 1;
                 }
             }
 
